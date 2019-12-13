@@ -5,10 +5,13 @@ exports.up = function(knex) {
     tbl.increments();
 
       tbl.string("name").notNullable().unique();
-      tbl.string("description").notNullable()
+      tbl.string("description").notNullable();
+      tbl.string("notes");
+      tbl.boolean("completed").notNullable().defaultTo(false);;
   })
 };
 
 exports.down = function(knex) {
+    return knex.schema.dropTableIfExists("projects");
   
 };
