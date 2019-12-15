@@ -13,31 +13,16 @@ router.get("/", (req, res) => {
         .catch(err => res.status(500).json({ message: 'Error: GET resources' }))
 });
 
-// router.post("/resources", (req, res) => {
-//     Projects.addResource()
-//          .then(resources => {
-//              res.status(200).json(resources);
-//          })
-//          .catch(err => res.status(500).json({ message: 'Error: GET resources' }))
-//  });
-
-router.get("/projects", (req, res) => {
-    Projects.findProjects()
-         .then(projects => {
-             res.status(200).json(projects);
-         })
-         .catch(err => res.status(500).json({ message: 'Error: GET projects' }))
- });
-
- router.get("/tasks", (req, res) => {
-    Projects.findTasks()
-         .then(tasks => {
+router.post("/", (req, res) => {
+    const resourceBody = req.body
+    Model.addResources(resourceBody)
+         .then(resources => {
              res.status(200).json(resources);
          })
-         .catch(err => res.status(500).json({ message: 'Error: GET tasks' }))
+         .catch(err => res.status(500).json({ message: 'Error: POST resources' }))
  });
 
-    
+ 
 
 module.exports = router;
 

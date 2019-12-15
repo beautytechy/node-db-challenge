@@ -1,11 +1,10 @@
 
 const express = require("express");
-
 const router = express.Router();
 const Model = require("../api/Model.js")
 
 
-router.get("/:id/tasks", (req, res) => {
+router.get("/:id", (req, res) => {
     const { id } = req.params;
     Model.findTasks(id)
     .then(tasks => {
@@ -19,29 +18,17 @@ router.get("/:id/tasks", (req, res) => {
       res.status(500).json({ message: "Failed to get tasks" });
     });
   });
-// router.post("/resources", (req, res) => {
-//     Projects.addResource()
-//          .then(resources => {
-//              res.status(200).json(resources);
-//          })
-//          .catch(err => res.status(500).json({ message: 'Error: GET resources' }))
-//  });
 
-router.get("/projects", (req, res) => {
-    Projects.findProjects()
-         .then(projects => {
-             res.status(200).json(projects);
-         })
-         .catch(err => res.status(500).json({ message: 'Error: GET projects' }))
- });
-
- router.get("/tasks", (req, res) => {
-    Projects.findTasks()
+router.post("/tasks", (req, res) => {
+  const taskBody = req.body
+    Model.addTasks(projectID, taskBody)
          .then(tasks => {
-             res.status(200).json(resources);
+             res.status(200).json(tasks);
          })
-         .catch(err => res.status(500).json({ message: 'Error: GET tasks' }))
+         .catch(err => res.status(500).json({ message: 'Error: POST task' }))
  });
+
+
 
     
 
