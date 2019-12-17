@@ -48,7 +48,7 @@ Tables need a primary key to uniquely identify each row.
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
-The name given to a table column that references the primary key on another table is "foreign key".
+The name given to a table column that references the primary key on another table is _foreign key_.
 
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
 
