@@ -17,11 +17,17 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     const projectBody = req.body
     Model.addProjects(projectBody)
-         .then(project => {
-             res.status(200).json(project);
-         })
-         .catch(err => res.status(500).json({ message: 'Error: POST projects' }))
- });
+        .then(project => {
+            console.log(project)
+            res.status(200).json(project);
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({ message: 'Error: POST projects' })
+        })
+
+})
+
 
 
 module.exports = router;
